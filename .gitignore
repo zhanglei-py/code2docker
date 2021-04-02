@@ -1,0 +1,13 @@
+.idea
+.DS_Store
+*.retry
+*.bin
+*.rpm
+*.gz
+*.xz
+*.zip
+*.tar
+*.bz2
+*.tgz
+*.log
+launch
