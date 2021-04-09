@@ -1,4 +1,5 @@
 # Install nset-cli
+
 ## Install Golang
 `rpm --import https://mirror.go-repo.io/centos/RPM-GPG-KEY-GO-REPO`<br />
 `curl -s https://mirror.go-repo.io/centos/go-repo.repo | tee /etc/yum.repos.d/go-repo.repo`<br />
@@ -20,5 +21,3 @@
 `cd nset-cli`<br />
 `make`<br />
 `make install`
-
-
