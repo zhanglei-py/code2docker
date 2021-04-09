@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func List2MapString (listString , offset string) []string {
+func List2MapString(listString, offset string) []string {
 	var mapString []string
 	if len(offset) == 0 {
 		offset = ","
@@ -20,7 +20,7 @@ func List2MapString (listString , offset string) []string {
 	return mapString
 }
 
-func SshHosts (moduleName, hostList string) ([]string, error) {
+func SshHosts(moduleName, hostList string) ([]string, error) {
 	var sshHosts []string
 	sshHosts, err := ReadInventoryIni("inventory.ini", moduleName)
 	if len(hostList) != 0 && len(moduleName) != 0 {

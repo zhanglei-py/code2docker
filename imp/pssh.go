@@ -16,6 +16,7 @@ const (
 	SSH_PASS = "kevin@0311"
 	SSH_PORT = 22
 )
+
 type SSHResult struct {
 	Host    string
 	Success bool
@@ -24,13 +25,13 @@ type SSHResult struct {
 
 func SshConn(user, password, host, key string, port int, cipherList []string) (*ssh.Session, error) {
 	var (
-		auth     []ssh.AuthMethod
-		addr     string
+		auth         []ssh.AuthMethod
+		addr         string
 		clientConfig *ssh.ClientConfig
-		client    *ssh.Client
-		config    ssh.Config
-		session   *ssh.Session
-		err     error
+		client       *ssh.Client
+		config       ssh.Config
+		session      *ssh.Session
+		err          error
 	)
 	auth = make([]ssh.AuthMethod, 0)
 	if key == "" {
@@ -64,10 +65,10 @@ func SshConn(user, password, host, key string, port int, cipherList []string) (*
 	}
 
 	clientConfig = &ssh.ClientConfig{
-		User:  user,
-		Auth:  auth,
+		User:    user,
+		Auth:    auth,
 		Timeout: 30 * time.Second,
-		Config: config,
+		Config:  config,
 		HostKeyCallback: func(hostname string, remote net.Addr, key ssh.PublicKey) error {
 			return nil
 		},
@@ -84,7 +85,7 @@ func SshConn(user, password, host, key string, port int, cipherList []string) (*
 	}
 
 	modes := ssh.TerminalModes{
-		ssh.ECHO:     0,   // disable echoing
+		ssh.ECHO:          0,     // disable echoing
 		ssh.TTY_OP_ISPEED: 14400, // input speed = 14.4kbaud
 		ssh.TTY_OP_OSPEED: 14400, // output speed = 14.4kbaud
 	}
@@ -106,7 +107,7 @@ func PsshRun(commandName string, sshHosts []string) {
 		}
 	*/
 	ch := make(chan SSHResult, len(sshHosts))
-	for  _, host := range sshHosts {
+	for _, host := range sshHosts {
 		sshResult = SshRun(commandName, SSH_USER, SSH_PASS, host, "", SSH_PORT, ciphers)
 		ch <- sshResult
 	}
@@ -116,8 +117,8 @@ func PsshRun(commandName string, sshHosts []string) {
 			fmt.Println(sshResult.Host + ":")
 			res := strings.Split(sshResult.Result, "\n")
 			for n, line := range res {
-				if (n+1) < len(res) {
-					fmt.Println(" ",line)
+				if (n + 1) < len(res) {
+					fmt.Println(" ", line)
 				}
 			}
 		}
@@ -125,7 +126,7 @@ func PsshRun(commandName string, sshHosts []string) {
 	return
 }
 
-func SshRun(commandName, user, password, host, key string, port int, ciphers []string) (SSHResult) {
+func SshRun(commandName, user, password, host, key string, port int, ciphers []string) SSHResult {
 	var cmdResult SSHResult
 	cmdResult.Host = host
 	session, err := SshConn(user, password, host, key, port, ciphers)

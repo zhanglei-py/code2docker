@@ -16,7 +16,7 @@ type SCPResult struct {
 	Result  string
 }
 
-func SftpConn (user, password, host string, port int) (*sftp.Client, error) {
+func SftpConn(user, password, host string, port int) (*sftp.Client, error) {
 	var (
 		auth         []ssh.AuthMethod
 		addr         string
@@ -51,7 +51,7 @@ func SftpConn (user, password, host string, port int) (*sftp.Client, error) {
 	return sftpClient, nil
 }
 
-func PscpCopy (localFile, remoteDir string, sshHosts []string) {
+func PscpCopy(localFile, remoteDir string, sshHosts []string) {
 	var scpResult SCPResult
 	/*
 		for _, host := range sshHosts {
@@ -60,16 +60,16 @@ func PscpCopy (localFile, remoteDir string, sshHosts []string) {
 		}
 	*/
 	ch := make(chan SCPResult, len(sshHosts))
-	for  _, host := range sshHosts {
+	for _, host := range sshHosts {
 		scpResult = ScpCopy(localFile, remoteDir, host)
 		ch <- scpResult
 	}
 	close(ch)
 	for scpResult = range ch {
 		if scpResult.Success {
-			fmt.Println(scpResult.Host + ":", scpResult.Success)
+			fmt.Println(scpResult.Host+":", scpResult.Success)
 		} else {
-			fmt.Println(scpResult.Host + ":", scpResult.Result)
+			fmt.Println(scpResult.Host+":", scpResult.Result)
 		}
 	}
 	/* */

@@ -1,17 +1,18 @@
 package cmd
 
 import (
-	"strings"
-	"nset-cli/imp"
 	"github.com/spf13/cobra"
+	"nset-cli/imp"
+	"strings"
 )
 
 func init() {
-	InstallCmd.Flags().StringVarP(&moduleName,"modules","m","","modules of nset")
+	InstallCmd.Flags().StringVarP(&moduleName, "modules", "m", "", "modules of nset")
+	InstallCmd.Flags().StringVarP(&moduleDir, "workdir", "w", "", "workdir of nset")
 	RootCmd.AddCommand(InstallCmd)
 }
 
-var InstallCmd = &cobra.Command {
+var InstallCmd = &cobra.Command{
 	Use:   "install",
 	Short: "-m|--modules <module1>,<module2>",
 	Long:  `nset-launch install <module>`,
@@ -21,10 +22,10 @@ var InstallCmd = &cobra.Command {
 		}
 		s := strings.Split(moduleName, ",")
 		if len(s) == 0 {
-			imp.RoleInstall(moduleName)
+			imp.RoleInstall(moduleName, moduleDir)
 		} else {
 			for _, v := range s {
-				imp.RoleInstall(v)
+				imp.RoleInstall(v, moduleDir)
 			}
 		}
 	},

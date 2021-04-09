@@ -2,9 +2,9 @@ package imp
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"os/exec"
-	"fmt"
 	"strings"
 )
 

@@ -2,17 +2,18 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 var (
-	moduleName string
+	moduleName  string
+	moduleDir   string
 	commandName string
-	localFiles string
-	remoteDir string
-	hostList string
-	iniFile string
+	localFiles  string
+	remoteDir   string
+	hostList    string
+	iniFile     string
 	sectionName string
 )
 
@@ -21,7 +22,7 @@ var RootCmd = &cobra.Command{
 	Short: "launch help",
 	Long:  `nset-launch is a bootstrap program for modules (NSET)`,
 	Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
+		cmd.Help()
 	},
 }
 

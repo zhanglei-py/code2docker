@@ -1,19 +1,19 @@
 package cmd
 
 import (
-	"strings"
-	"nset-cli/imp"
 	"github.com/spf13/cobra"
+	"nset-cli/imp"
+	"strings"
 )
 
 func init() {
-	RunCmd.Flags().StringVarP(&commandName,"command","c","","commands of ssh")
-	RunCmd.Flags().StringVarP(&moduleName,"module","m","","module name")
-	RunCmd.Flags().StringVarP(&hostList,"hosts","H","","host list")
+	RunCmd.Flags().StringVarP(&commandName, "command", "c", "", "commands of ssh")
+	RunCmd.Flags().StringVarP(&moduleName, "module", "m", "", "module name")
+	RunCmd.Flags().StringVarP(&hostList, "hosts", "H", "", "host list")
 	RootCmd.AddCommand(RunCmd)
 }
 
-var RunCmd = &cobra.Command {
+var RunCmd = &cobra.Command{
 	Use:   "run",
 	Short: "-c|--command <command1>;<command2> -m|--module <module> [-H|--hosts <host1>,<addr1>]",
 	Long:  `run remote command`,

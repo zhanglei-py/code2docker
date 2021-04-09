@@ -7,14 +7,14 @@ import (
 )
 
 func init() {
-	PutCmd.Flags().StringVarP(&localFiles,"local","l","","local file path")
-	PutCmd.Flags().StringVarP(&remoteDir,"remote","r","","remote dir")
-	PutCmd.Flags().StringVarP(&moduleName,"module","m","","module name")
-	PutCmd.Flags().StringVarP(&hostList,"hosts","H","","host list")
+	PutCmd.Flags().StringVarP(&localFiles, "local", "l", "", "local file path")
+	PutCmd.Flags().StringVarP(&remoteDir, "remote", "r", "", "remote dir")
+	PutCmd.Flags().StringVarP(&moduleName, "module", "m", "", "module name")
+	PutCmd.Flags().StringVarP(&hostList, "hosts", "H", "", "host list")
 	RootCmd.AddCommand(PutCmd)
 }
 
-var PutCmd = &cobra.Command {
+var PutCmd = &cobra.Command{
 	Use:   "put",
 	Short: "-l|--local <file1>,<file2> -r|--remote <dir path> -m|--module <module name> [-H|--hosts <host1>,<addr1>]",
 	Long:  `nset-launch put for pscp`,
