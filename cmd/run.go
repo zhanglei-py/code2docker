@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"strings"
-	"launch/imp"
+	"nset-cli/imp"
 	"github.com/spf13/cobra"
 )
 

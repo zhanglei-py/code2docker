@@ -1,7 +1,7 @@
-all: build install
+all: build
 
 build:
-	go build -o nset-cli
+	go build -o dist/nset-cli
 
 install:
-	\cp launch /opt/nset-ansible/
+	\cp dist/nset-cli /opt/nset-ansible/

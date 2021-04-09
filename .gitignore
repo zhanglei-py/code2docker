@@ -10,4 +10,4 @@
 *.bz2
 *.tgz
 *.log
-launch
+dist

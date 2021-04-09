@@ -1,7 +1,7 @@
 package main
 
 import (
-	"launch/cmd"
+	"nset-cli/cmd"
 )
 
 var ExecPath string
