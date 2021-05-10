@@ -24,7 +24,7 @@ fi
 ## Golang Env
 ```
 if [ `grep 'GO111MODULE' ~/.bashrc -c` -eq 0 ]; then
-  echo "export GO111MODULE=off GOPATH=~/go" >> ~/.bash_profile
+  echo "export GO111MODULE=off GOPATH=~/go" >> ~/.bashrc
   . ~/.bashrc
 fi
 ```
